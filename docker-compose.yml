@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+
+  # Eureka Server
+  eureka-server:
+    build: ./eureka-server
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - spring-net
+
+  # API Gateway
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    depends_on:
+      - eureka-server
+    ports:
+      - "8080:8080"
+    networks:
+      - spring-net
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+
+  # Service-A Instances
+  service-a1:
+    build: ./service-a
+    networks:
+      - spring-net
+    environment:
+      - SPRING_APPLICATION_NAME=service-a
+      - SERVER_PORT=0
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+
+  service-a2:
+    build: ./service-a
+    networks:
+      - spring-net
+    environment:
+      - SPRING_APPLICATION_NAME=service-a
+      - SERVER_PORT=0
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+
+  service-a3:
+    build: ./service-a
+    networks:
+      - spring-net
+    environment:
+      - SPRING_APPLICATION_NAME=service-a
+      - SERVER_PORT=0
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+
+  # Service-B Instances
+  service-b1:
+    build: ./service-b
+    networks:
+      - spring-net
+    environment:
+      - SPRING_APPLICATION_NAME=service-b
+      - SERVER_PORT=0
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+
+  service-b2:
+    build: ./service-b
+    networks:
+      - spring-net
+    environment:
+      - SPRING_APPLICATION_NAME=service-b
+      - SERVER_PORT=0
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+
+  service-b3:
+    build: ./service-b
+    networks:
+      - spring-net
+    environment:
+      - SPRING_APPLICATION_NAME=service-b
+      - SERVER_PORT=0
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+
+networks:
+  spring-net:

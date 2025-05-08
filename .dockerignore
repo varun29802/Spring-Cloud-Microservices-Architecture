@@ -1,0 +1,27 @@
+# Maven target directory
+target/
+
+# Git files
+.git
+.gitignore
+
+# IDE specific files
+*.iml
+.idea/
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Docker-related
+Dockerfile
+docker-compose.yml
+
+# Node or front-end files (if applicable)
+node_modules/
+dist/
+build/
+
+# Tests
+**/test/**
