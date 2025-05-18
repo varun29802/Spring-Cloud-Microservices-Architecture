@@ -10,6 +10,7 @@ services:
       - "8761:8761"
     networks:
       - spring-net
+      - keycloak-net
 
   # API Gateway
   api-gateway:
@@ -18,17 +19,20 @@ services:
     depends_on:
       - eureka-server
     ports:
-      - "8080:8080"
+      - "7081:7081"
     networks:
       - spring-net
+      - keycloak-net
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
 
   # Service-A Instances
   service-a1:
     build: ./service-a
+    container_name: service-a1
     networks:
       - spring-net
+      - keycloak-net
     environment:
       - SPRING_APPLICATION_NAME=service-a
       - SERVER_PORT=0
@@ -36,8 +40,10 @@ services:
 
   service-a2:
     build: ./service-a
+    container_name: service-a2
     networks:
       - spring-net
+      - keycloak-net
     environment:
       - SPRING_APPLICATION_NAME=service-a
       - SERVER_PORT=0
@@ -45,8 +51,10 @@ services:
 
   service-a3:
     build: ./service-a
+    container_name: service-a3
     networks:
       - spring-net
+      - keycloak-net
     environment:
       - SPRING_APPLICATION_NAME=service-a
       - SERVER_PORT=0
@@ -55,8 +63,10 @@ services:
   # Service-B Instances
   service-b1:
     build: ./service-b
+    container_name: service-b1
     networks:
       - spring-net
+      - keycloak-net
     environment:
       - SPRING_APPLICATION_NAME=service-b
       - SERVER_PORT=0
@@ -64,8 +74,10 @@ services:
 
   service-b2:
     build: ./service-b
+    container_name: service-b2
     networks:
       - spring-net
+      - keycloak-net
     environment:
       - SPRING_APPLICATION_NAME=service-b
       - SERVER_PORT=0
@@ -73,8 +85,10 @@ services:
 
   service-b3:
     build: ./service-b
+    container_name: service-b3
     networks:
       - spring-net
+      - keycloak-net
     environment:
       - SPRING_APPLICATION_NAME=service-b
       - SERVER_PORT=0
@@ -82,3 +96,5 @@ services:
 
 networks:
   spring-net:
+  keycloak-net:
+    external: true

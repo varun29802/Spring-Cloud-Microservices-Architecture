@@ -1,7 +1,13 @@
 server:
-  port: 8080
+  port: 7081
 
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak:8080/realms/Micro-Service
+          jwk-set-uri: http://keycloak:8080/realms/Micro-Service/protocol/openid-connect/certs
   application:
     name: api-gateway
   cloud:
