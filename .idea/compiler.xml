@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Annotation profile for api-gateway" enabled="true">
+      <profile name="Annotation profile for service-b" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -10,8 +10,8 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
         <module name="api-gateway" />
-        <module name="eureka-server" />
         <module name="service-a" />
+        <module name="eureka-server" />
         <module name="service-b" />
       </profile>
     </annotationProcessing>

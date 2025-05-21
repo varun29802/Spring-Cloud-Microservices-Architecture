@@ -15,4 +15,7 @@ eureka:
     lease-expiration-duration-in-seconds: 30
   client:
     service-url:
+      #     Below property for dev
       defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://eureka-server:8761/eureka}
+      #     Below property for localhost
+#      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka}
