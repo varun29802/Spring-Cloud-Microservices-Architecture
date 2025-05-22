@@ -2,6 +2,9 @@ server:
   port: 7081
 
 spring:
+  redis:
+    host: redis-cache
+    port: 6379
   security:
     oauth2:
       resourceserver:
